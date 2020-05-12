@@ -1,0 +1,2 @@
+rootProject.name='PS Class Journal'
+include ':app'
