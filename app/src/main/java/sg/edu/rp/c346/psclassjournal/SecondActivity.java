@@ -24,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<DailyCA> CA1, CA2;
 
     Module module;
-    String code, name, message;
+    String code, name, message, subject;
     int request = 1;
 
     @Override
@@ -84,6 +84,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                subject = "Problem Statement 18016165";
                 message = "Hi Faci,\n\nI am Jian Tong\nPlease see my remark so far, Thank you!\n\n";
 
                 for(int i = 0; i<CA2.size(); i++){
@@ -94,7 +95,8 @@ public class SecondActivity extends AppCompatActivity {
 
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{"jason_lim@rp.edu.sg"});
-                email.putExtra(Intent.EXTRA_SUBJECT, message);
+                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                email.putExtra(Intent.EXTRA_TEXT, message);
                 email.setType("message/rfc822");
                 startActivity(Intent.createChooser(email, "Choose an Email client :"));
 
