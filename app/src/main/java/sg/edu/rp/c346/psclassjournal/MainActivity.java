@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         moduleCodeArray = new ArrayList<String>();
         moduleCodeArray.add("C347");
+        moduleCodeArray.add("C346");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, moduleCodeArray );
 
