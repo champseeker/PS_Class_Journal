@@ -24,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayList<DailyCA> CA1, CA2;
 
     Module module;
-    String code, name;
+    String code, name, message;
     int request = 1;
 
     @Override
@@ -63,7 +63,6 @@ public class SecondActivity extends AppCompatActivity {
         lv2.setAdapter(aa);
         lv2.refreshDrawableState();
 
-
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,9 +84,19 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                message = "Hi Faci,\n\nI am Jian Tong\nPlease see my remark so far, Thank you!\n\n";
+
+                for(int i = 0; i<CA2.size(); i++){
+
+                    message += "Week " + CA2.get(i).getWeek() + ": DG: " + CA2.get(i).getDgGrade() + "\n";
+
+                }
+
+                Log.i("TAG", "onClick: lmao " + message);
+
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{"jason_lim@rp.edu.sg"});
-                email.putExtra(Intent.EXTRA_SUBJECT, "Test Email from C347 PS");
+                email.putExtra(Intent.EXTRA_SUBJECT, message);
                 email.setType("message/rfc822");
                 startActivity(Intent.createChooser(email, "Choose an Email client :"));
 
