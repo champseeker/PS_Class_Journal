@@ -2,22 +2,14 @@ package sg.edu.rp.c346.psclassjournal;
 
 import java.io.Serializable;
 
-public class DailyCA implements Serializable {
+public class Module implements Serializable {
 
-    private String dgGrade;
     private String moduleCode;
     private String moduleName;
-    private int week;
 
-    public DailyCA(String dgGrade, String moduleCode, String moduleName, int week) {
-        this.dgGrade = dgGrade;
+    public Module(String moduleCode, String moduleName) {
         this.moduleCode = moduleCode;
         this.moduleName = moduleName;
-        this.week = week;
-    }
-
-    public String getDgGrade() {
-        return dgGrade;
     }
 
     public String getModuleCode() {
@@ -26,10 +18,6 @@ public class DailyCA implements Serializable {
 
     public String getModuleName() {
         return moduleName;
-    }
-
-    public int getWeek() {
-        return week;
     }
 
 }

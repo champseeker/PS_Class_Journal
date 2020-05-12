@@ -23,7 +23,8 @@ public class SecondActivity extends AppCompatActivity {
     ArrayAdapter aa;
     ArrayList<DailyCA> CA1, CA2;
 
-    String code;
+    Module module;
+    String code, name;
     int request = 1;
 
     @Override
@@ -40,15 +41,17 @@ public class SecondActivity extends AppCompatActivity {
         CA1 = new ArrayList<DailyCA>();
         CA2 = new ArrayList<DailyCA>();
 
-        DailyCA w1 = new DailyCA("B", "C347", 1);
+        DailyCA w1 = new DailyCA("B", "C347", "Android Programming 2", 1);
         CA1.add(w1);
-        DailyCA w2 = new DailyCA("C", "C347", 2);
+        DailyCA w2 = new DailyCA("C", "C347", "Android Programming 2", 2);
         CA1.add(w2);
-        DailyCA w3 = new DailyCA("A", "C347", 3);
+        DailyCA w3 = new DailyCA("A", "C347", "Android Programming 2", 3);
         CA1.add(w3);
 
         Intent i = getIntent();
-        code = i.getStringExtra("Module Code");
+        module = (Module) i.getSerializableExtra("module");
+        code = module.getModuleCode();
+        name = module.getModuleName();
 
         for (int c = 0; c < CA1.size(); c++){
             if(CA1.get(c).getModuleCode().equals(code)){
@@ -66,7 +69,13 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
-                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+
+                if(code.equals("C347")){
+                    rpIntent.setData(Uri.parse("https://www.rp.edu.sg/schools-courses/courses/full-time-diplomas/full-time-courses/modules/index/C347"));
+                }else if(code.equals("C302")){
+                    rpIntent.setData(Uri.parse("https://www.rp.edu.sg/schools-courses/courses/full-time-diplomas/full-time-courses/modules/index/C302"));
+                }
+
                 startActivity(rpIntent);
 
             }
@@ -92,6 +101,7 @@ public class SecondActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(getBaseContext(), ThirdActivity.class);
                 intent2.putExtra("Module Code", code);
                 intent2.putExtra("Week", (CA2.size() + 1));
+                intent2.putExtra("name", name);
                 startActivityForResult(intent2, request);
 
             }

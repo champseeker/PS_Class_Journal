@@ -18,7 +18,7 @@ public class ThirdActivity extends AppCompatActivity {
     RadioGroup rg;
     Button btn;
 
-    String code, grade;
+    String code, grade, name;
     Integer week;
 
     @Override
@@ -34,6 +34,7 @@ public class ThirdActivity extends AppCompatActivity {
         Intent i = getIntent();
         code = i.getStringExtra("Module Code");
         week = i.getIntExtra("Week", 0);
+        name = i.getStringExtra("name");
 
         tvWeek.setText("Week " + week);
         iv.setImageResource(R.drawable.dg);
@@ -54,7 +55,7 @@ public class ThirdActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                DailyCA wnew = new DailyCA(grade, code, week);
+                DailyCA wnew = new DailyCA(grade, code, name, week);
 
                 Intent i = new Intent();
                 i.putExtra("new", wnew);
