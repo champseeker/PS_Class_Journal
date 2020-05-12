@@ -92,8 +92,6 @@ public class SecondActivity extends AppCompatActivity {
 
                 }
 
-                Log.i("TAG", "onClick: lmao " + message);
-
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.putExtra(Intent.EXTRA_EMAIL, new String[]{"jason_lim@rp.edu.sg"});
                 email.putExtra(Intent.EXTRA_SUBJECT, message);
